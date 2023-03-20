@@ -6,3 +6,4 @@ if __name__ == "__main__":
     app.mainloop()
     print("Application clossing")
 
+## https://www.youtube.com/watch?v=jGPeHhyaH0c 2:56:05
