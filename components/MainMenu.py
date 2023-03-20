@@ -26,7 +26,7 @@ class MainMenu(tk.Frame):
         tk.Button(
             self,
             text="CREAR UN TEST",
-            command=self.manager.home_to_create,
+            command=lambda: self.manager.home_to_create(),
             **styles.STYLE,
             relief=tk.FLAT,
             activebackground=styles.BACKGROUND,
@@ -37,7 +37,7 @@ class MainMenu(tk.Frame):
         tk.Button(
             self,
             text="EDITAR UN TEST",
-            command=lambda: print("Editar test"),
+            command=lambda: self.manager.home_to_update(),
             **styles.STYLE,
             relief=tk.FLAT,
             activebackground=styles.BACKGROUND,
