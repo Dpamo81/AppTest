@@ -1,8 +1,9 @@
 import tkinter as tk
 from Controller import Controller
 from screens.HomeScreen import HomeScreen
-
 from screens.AddTestScreen import AddTestScreen
+from screens.UpdateTestScreen import UpdateTestScreen
+
 from style import styles
 
 class Manager(tk.Tk):
@@ -23,7 +24,7 @@ class Manager(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         self.frames = {}
 
-        pantallas = (HomeScreen, AddTestScreen)
+        pantallas = (HomeScreen, AddTestScreen, UpdateTestScreen)
         for F in pantallas:
             frame = F(container, self)
             self.frames[F] = frame
@@ -39,3 +40,17 @@ class Manager(tk.Tk):
 
     def home_to_create(self):
         self.show_frame(AddTestScreen)
+
+    def home_to_update(self):
+        new_options = self.get_test_names()
+        self.frames[UpdateTestScreen].options.update_options(new_options)
+        self.show_frame(UpdateTestScreen)
+
+    
+    ## Aqui empiezan los metodos de la BBDD
+
+    def get_test_names(self):
+        return self.controller.get_test_names()
+    
+    def add_question(self, test_name,question_text, question_choices, correct_choice):
+        self.controller.add_question(test_name,question_text, question_choices, correct_choice)

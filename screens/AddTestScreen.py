@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.messagebox
+
 from sqlite3 import ProgrammingError
 from style import styles
 from components.MainMenu import MainMenu
@@ -19,6 +20,7 @@ class AddTestScreen(tk.Frame):
         ).pack(
             **styles.PACK
         )
+##      Para entrar el nuevo test
         self.test_entry = tk.Entry(
             self,
             justify=tk.CENTER,
@@ -27,13 +29,16 @@ class AddTestScreen(tk.Frame):
         self.test_entry.pack(
             **styles.PACK
         )
+##      Para utilizar el enter del teclado
         self.test_entry.bind("<Return>", self.add_test)
+##      Menu de navegacion
         MainMenu(
             self,
             self.manager
         ).pack(
             **styles.PACK
         )
+##  Metodo para ejecutar la entrada de texto
     def add_test(self, event):
         test_name = self.test_entry.get()
         if test_name =="":
@@ -51,7 +56,7 @@ class AddTestScreen(tk.Frame):
             except ProgrammingError:
                 tk.messagebox.showinfo(
                     title="ERROR",
-                    message="Ya existe un test con este nombre, Prueba otro"
+                    message="Ya existe un test con este nombre. Prueba otro"
                 )
             finally:
                 print(test_name)

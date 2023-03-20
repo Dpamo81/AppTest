@@ -53,6 +53,6 @@ if __name__ == "__main__":
             ]
         ),
     ]
-    test = Test(test_text="OWD", questions=questions)
+    test = Test(test_name="OWD", questions=questions)
     session.add(test)
     session.commit()
